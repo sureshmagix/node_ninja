@@ -22,7 +22,7 @@ const server = http.createServer((req,res)=>{
             break;
         case '/about-me':
                 res.statusCode= 301;
-                res.setHeader('Location','/about');
+                res.setHeader('Location','/about-us');
                 res.end();
                 break;            
             

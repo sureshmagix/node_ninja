@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "node_ninja",
+  "description": "Node.js Crash Course Tutorial\r https://youtube.com/playlist?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU&si=zbfOR9sDWBEIjb75",
+  "version": "1.0.0",
+  "main": "files.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sureshmagix/node_ninja.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sureshmagix/node_ninja/issues"
+  },
+  "homepage": "https://github.com/sureshmagix/node_ninja#readme"
+}
