@@ -1,7 +1,10 @@
 const http = require('http');
 
+
 const server = http.createServer((req,res)=>{
     console.log('Request made');
+    res.write('A reques has been made');
+    res.end();
 });
 
 
