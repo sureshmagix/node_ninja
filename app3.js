@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 
 // express app
 
@@ -11,19 +12,8 @@ const express = require('express');
 
 //listeing for a request
 app.listen(3000);
-app.use((req,res,next)=>{
-    console.log('new request mad:');
-    console.log('host:',req.hostname);
-    console.log('path:',req.path);
-    console.log('method:', req.method);
-    next();
-});
 
-app.use((req,res,next)=>{
-    console.log('in the next middle ware');
-
-    next();
-});
+app.use(morgan('dev'));
 
 app.get('/',(req,res)=>{
     //res.send('<p> home page </p>');
