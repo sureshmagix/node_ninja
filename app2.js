@@ -14,12 +14,17 @@ app.listen(3000);
 
 app.get('/',(req,res)=>{
     //res.send('<p> home page </p>');
-    res.render('index');
+    const blogs =[
+        {title: 'yoshi finds eggs', snippet:'Lorem ipsum dolor sit amet conserctetur'},
+        {title: 'Mario finds stars', snippet:'Lorem ipsum dolor sit amet conserctetur'},
+        {title: 'How to defeat browser', snippet:'Lorem ipsum dolor sit amet conserctetur'},
+         ];
+    res.render('index',{title: 'Home',blogs});
 });
 
 
 app.get('/about',(req,res)=>{
-    res.render('about');
+    res.render('about',{title:'about'});
 });
 
 // redirecting a page to exsisting uirl
@@ -28,11 +33,11 @@ app.get('/about-us',(req,res)=>{
 })
 
 app.get('/blogs/create', (req,res)=>{
-    res.render('create');
+    res.render('create', {title: 'Create a new Blog'});
 })
 
 // 404 page and It must be always at bottom after all urls
 
 app.use((req,res)=>{
-    res.status(404).render('404');
+    res.status(404).render('404',{title:'404 Page'});
 })

@@ -2,15 +2,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Blog ninja</title>
+        <title> Blog ninja|<%= title %></title>
     </head>
+
+    
     <body>
 
-
+        <% const name ='mario in line' %>
         <nav>
             <div class="site-title">
                 <a href="/"> <h1>Blog ninja</h1></a>
                 <p> A Net Ninja Site</p>
+                <p><%= name %></p>
+
             </div>
             <ul>
                 <li><a href="/"> Blogs </a>
@@ -21,6 +25,13 @@
 
         <div class="blogs content">
             <h2> All Blogs </h2>
+            <% if (blogs.length>0){ %>
+<% blogs.forEach(blog=>{ %>
+    <h3 class ="title"> <%= blog.title %></h3>
+    <p class="snippet">  <%= blog.snippet %> </p>
+
+<% }) %>
+          <% } %>
         </div>
     </body>
 </html>
