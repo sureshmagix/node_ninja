@@ -13,6 +13,7 @@ const morgan = require('morgan');
 //listeing for a request
 app.listen(3000);
 
+app.use(express.static('public')); //once we use this line then what ever in public folder can be accessed by the front end
 app.use(morgan('dev'));
 
 app.get('/',(req,res)=>{
