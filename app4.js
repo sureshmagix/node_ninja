@@ -31,7 +31,7 @@ app.use(morgan('dev'));
 // mongoose and monggose sandbox routes
 app.get('/add-blog', (req, res)=>{
     const blog = new Blog({
-        title: 'new blog',
+        title: 'new blog2',
         snippet:' about my new blog',
         body: 'more about my new blog'
     })
@@ -67,16 +67,20 @@ app.get('/single-blog',(req,res)=>{
 
 
 
-app.get('/',(req,res)=>{
-    //res.send('<p> home page </p>');
-    const blogs =[
-        {title: 'yoshi finds eggs', snippet:'Lorem ipsum dolor sit amet conserctetur'},
-        {title: 'Mario finds stars', snippet:'Lorem ipsum dolor sit amet conserctetur'},
-        {title: 'How to defeat browser', snippet:'Lorem ipsum dolor sit amet conserctetur'},
-         ];
-    res.render('index',{title: 'Home',blogs});
-});
+// app.get('/',(req,res)=>{
+//     //res.send('<p> home page </p>');
+//     const blogs =[
+//         {title: 'yoshi finds eggs', snippet:'Lorem ipsum dolor sit amet conserctetur'},
+//         {title: 'Mario finds stars', snippet:'Lorem ipsum dolor sit amet conserctetur'},
+//         {title: 'How to defeat browser', snippet:'Lorem ipsum dolor sit amet conserctetur'},
+//          ];
+//     res.render('index',{title: 'Home',blogs});
+// });
 
+
+app.get('/',(req,res)=>{
+    res.redirect('/blogs');
+});
 
 app.get('/about',(req,res)=>{
     res.render('about',{title:'about'});
@@ -85,6 +89,17 @@ app.get('/about',(req,res)=>{
 // redirecting a page to exsisting uirl
 app.get('/about-us',(req,res)=>{
     res.redirect('./about');
+})
+
+app.get('/blogs',(req,res)=>{
+    Blog.find().sort({createdAt:-1})
+    .then((result)=>{
+        res.render('index',{title: 'All Blogs', blogs: result})
+
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
 })
 
 app.get('/blogs/create', (req,res)=>{
