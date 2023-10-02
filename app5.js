@@ -26,7 +26,7 @@ mongoose.connect(dbURI)
 
 // middleware and static files
 app.use(express.static('public')); //once we use this line then what ever in public folder can be accessed by the front end
-app.use(express.urlencoded({exteneded: true}));
+app.use(express.urlencoded({extended: true}));
 app.use(morgan('dev'));
 
 // mongoose and monggose sandbox routes
@@ -115,7 +115,16 @@ app.post('/blogs',(req,res)=>{
     .catch((err)=>{
         console.log(err);
     })
+})
 
+app.get('blogs/:id',(req,res)=>{
+    const id= req.params.id;
+    console.log(id);
+    Blog.findById(id)
+    .then(result => {
+        res.render('details', {blog: result, title: 'Blog Details'});
+    })
+    .catch(err=> {console.log(err)})
 
 })
 
